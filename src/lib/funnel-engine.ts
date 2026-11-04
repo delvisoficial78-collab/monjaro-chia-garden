@@ -693,7 +693,7 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
   function G() {
     const e = g.querySelector(`[data-pct]`);
     if (!e) return;
-    const t = +(e as HTMLElement).dataset.pct!;
+    const t = +(e as HTMLElement).dataset["pct"]!;
     const n = e.querySelector(`[data-progress]`) as HTMLElement;
     const r = e.querySelector(`[data-progress-num]`) as HTMLElement;
     c(() => {
@@ -769,7 +769,7 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
 
     g.querySelectorAll(`[data-pick]`).forEach((btn) => {
       btn.addEventListener(`click`, () => {
-        const op = t[+(btn as HTMLElement).dataset.pick!];
+        const op = t[+(btn as HTMLElement).dataset["pick"]!];
         if (e.multi) {
           const cur: any[] = D(h.answers[e.id]);
           const idx = cur.indexOf(op.title);
@@ -867,11 +867,11 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
     aEl.addEventListener(`pointercancel`, stop);
 
     g.querySelectorAll(`[data-unit]`).forEach((btn) => {
-      (btn as HTMLElement).classList.toggle(`is-active`, (btn as HTMLElement).dataset.unit === h.units[t]);
+      (btn as HTMLElement).classList.toggle(`is-active`, (btn as HTMLElement).dataset["unit"] === h.units[t]);
       btn.addEventListener(`click`, () => {
-        h.units[t] = (btn as HTMLElement).dataset.unit!;
+        h.units[t] = (btn as HTMLElement).dataset["unit"]!;
         g.querySelectorAll(`[data-unit]`).forEach((el) =>
-          (el as HTMLElement).classList.toggle(`is-active`, (el as HTMLElement).dataset.unit === h.units[t]),
+          (el as HTMLElement).classList.toggle(`is-active`, (el as HTMLElement).dataset["unit"] === h.units[t]),
         );
         draw();
       });
@@ -1196,7 +1196,7 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
     for (const el of document.querySelectorAll(`[data-checkout]`)) {
       el.addEventListener(`click`, () => {
         const btn = el as HTMLElement;
-        if (btn.dataset.checkout !== `checkout_click`) x.evento(btn.dataset.checkout!);
+        if (btn.dataset["checkout"] !== `checkout_click`) x.evento(btn.dataset["checkout"]!);
         x.evento(`checkout_click`);
       });
     }
