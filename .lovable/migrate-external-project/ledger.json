@@ -1,0 +1,13 @@
+{
+  "source": "site (saveweb2zip capture of chia-journey-quiz.lovable.app)",
+  "capabilities": [
+    { "capability": "code", "source": "captured bundles (routes-Dtp848LP.js)", "outcome": "funnel engine ported to src/lib/funnel-engine.ts, mounted by src/routes/index.tsx", "status": "verified", "next_action": "" },
+    { "capability": "styles/fonts", "source": "css/*.css + poppins woff2", "outcome": "copied to public/css and public/fonts, linked in root head", "status": "verified", "next_action": "" },
+    { "capability": "media", "source": "missing from capture; downloaded from the still-live original site", "outcome": "35 assets in public/funnel", "status": "verified", "next_action": "" },
+    { "capability": "records/database", "source": "none (static funnel, no backend in source)", "outcome": "not applicable", "status": "absent", "next_action": "" },
+    { "capability": "auth", "source": "none in source", "outcome": "not applicable", "status": "absent", "next_action": "" },
+    { "capability": "checkout", "source": "pay.kursinha.com links with UTM + quiz params", "outcome": "preserved verbatim incl. name/qz_* params, AB variant ?ab=B", "status": "verified", "next_action": "" },
+    { "capability": "vsl players", "source": "convertea/VTurb smart player config in source (accounts+player ids, revealAt)", "outcome": "config preserved; deployed source build renders vsl step as content page without player embed", "status": "verified", "next_action": "if a video embed is desired on vsl-1, original player script must be re-added" },
+    { "capability": "analytics/events", "source": "Lovable analytics proxy (~flock.js, events.js) + x.evento hooks", "outcome": "event hooks preserved as no-ops like the deployed build; Lovable hosting provides analytics", "status": "accepted", "next_action": "" }
+  ]
+}

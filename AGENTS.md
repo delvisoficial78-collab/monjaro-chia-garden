@@ -8,3 +8,17 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+<!-- LOVABLE:BEGIN:agent-notes -->
+## Project notes
+
+- The "/" funnel (Mounjaro de Chia quiz) is a ported vanilla-DOM engine in
+  `src/lib/funnel-engine.ts`, mounted once from `src/routes/index.tsx` via
+  useEffect. Why: it was ported 1:1 from the captured original app, which used
+  the same architecture; keep funnel edits in the engine's step/config data,
+  not in React components.
+- Original site styling lives in `public/css/*.css` (linked after the template
+  stylesheet in `src/routes/__root.tsx`); funnel media is in `public/funnel/`.
+- Debug harness preserved from the original: `/?debug[&step=<id|index>]`
+  (auto-fills sample answers), `__funnel.steps()/go()/preencher()` on localhost.
+<!-- LOVABLE:END:agent-notes -->
