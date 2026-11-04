@@ -948,9 +948,11 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
       const imgs = [...g.querySelectorAll(`.carousel img`)] as HTMLElement[];
       let idx = 0;
       carouselId = o(() => {
-        imgs[idx].classList.remove(`is-active`);
+        const cur = imgs[idx];
+        if (cur) cur.classList.remove(`is-active`);
         idx = (idx + 1) % imgs.length;
-        imgs[idx].classList.add(`is-active`);
+        const next = imgs[idx];
+        if (next) next.classList.add(`is-active`);
       }, total / imgs.length);
     }
 
@@ -1048,8 +1050,8 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
     const semM = J(se(), 1.3);
     const dCom = path(comM);
     const dSem = path(semM);
-    const fimCom = comM[comM.length - 1];
-    const fimSem = semM[semM.length - 1];
+    const fimCom = comM[comM.length - 1]!;
+    const fimSem = semM[semM.length - 1]!;
     const decimals = range >= 3 ? 0 : 1;
     const fmt = (n: number) => n.toFixed(decimals).replace(`.`, `,`);
     const grid = [0, 1, 2, 3].map((i) => {
@@ -1109,9 +1111,9 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
         ${dot(sx(1), sy(fimSem.peso), `chart__dot--sem`, `#C4CFCA`)}
         ${dot(sx(1), sy(fimCom.peso), `chart__dot--com`, `#12B76A`)}
 
-        ${pill(`Sem o método`, sx(0.38), sy(semM[6].peso) - 15, `chart__pill--sem`, `#9AA8A3`)}
+        ${pill(`Sem o método`, sx(0.38), sy(semM[6]!.peso) - 15, `chart__pill--sem`, `#9AA8A3`)}
 
-        ${pill(`Com o Mounjaro de Chia`, sx(0.7), (sy(semM[11].peso) + sy(comM[11].peso)) / 2, `chart__pill--com`, `#12B76A`)}
+        ${pill(`Com o Mounjaro de Chia`, sx(0.7), (sy(semM[11]!.peso) + sy(comM[11]!.peso)) / 2, `chart__pill--com`, `#12B76A`)}
 
         ${[`Hoje`, `15 dias`, `30 dias`]
           .map(
@@ -1221,8 +1223,9 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
     else if (t.image) list.push(t.image);
     if (t.carousel) list.push(...t.carousel);
     if (t.images || t.imagesBy)
-      list.push(...Object.values(R(t.imagesBy, t.images || {})));
-    for (const op of z(t) || []) if (op.image) list.push(op.image);
+      list.push(...(Object.values(R(t.imagesBy, t.images || {})) as string[]));
+    const ops: any[] = z(t) || [];
+    for (const op of ops) if (op?.image) list.push(String(op.image));
     for (const img of list) {
       const el = new Image();
       el.src = f(img);
@@ -1235,7 +1238,7 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
     v(null);
     S.enter(e.id);
     x.etapa(e.id);
-    fe[e.type](e);
+    fe[e.type]?.(e);
     g.classList.remove(`step-in`);
     void g.offsetWidth;
     g.classList.add(`step-in`);
@@ -1288,15 +1291,15 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
   }
 
   function he() {
-    const q = new URLSearchParams(location.search);
+    const qs = new URLSearchParams(location.search);
     if (
-      !q.has(`debug`) ||
+      !qs.has(`debug`) ||
       (![`localhost`, `127.0.0.1`].includes(location.hostname) &&
-        q.get(`debug`) !== `chia-rev-0826`)
+        qs.get(`debug`) !== `chia-rev-0826`)
     )
       return;
 
-    const reveal = q.has(`reveal`) ? Math.max(0, +q.get(`reveal`)! || 0) : 3;
+    const reveal = qs.has(`reveal`) ? Math.max(0, +qs.get(`reveal`)! || 0) : 3;
     u.vsl1.revealAt = reveal;
     u.vsl1B.revealAt = reveal;
     u.vslFinal.revealAt = reveal;
@@ -1351,7 +1354,7 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
       `[funil] variante ${x.variant} — troque com ?ab=A ou ?ab=B na URL.`,
     );
 
-    const stepParam = q.get(`step`);
+    const stepParam = qs.get(`step`);
     if (stepParam) {
       const idx = /^\d+$/.test(stepParam) ? +stepParam : p.findIndex((s: any) => s.id === stepParam);
       if (idx >= 0 && idx < p.length) {
