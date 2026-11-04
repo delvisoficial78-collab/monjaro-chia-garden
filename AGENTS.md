@@ -22,3 +22,8 @@
 - Debug harness preserved from the original: `/?debug[&step=<id|index>]`
   (auto-fills sample answers), `__funnel.steps()/go()/preencher()` on localhost.
 <!-- LOVABLE:END:agent-notes -->
+- Meta Pixel 1810716507012315 is injected in `src/routes/__root.tsx` (head,
+  agent:'lovable'): PageView on load, one document-level click listener firing
+  InitiateCheckout on `a/button[data-checkout]`. The CAPI token is the
+  `META_CAPI_ACCESS_TOKEN` secret (unused until server-side events exist). No
+  consent banner (builder chose no-banner; regional limits apply).
