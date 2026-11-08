@@ -45,7 +45,9 @@ function FunnelPage() {
 
   return (
     <>
-      <main className="shell" id="shell" ref={shellRef} />
+      <div id="app">
+        <main className="shell" id="shell" ref={shellRef} />
+      </div>
       <div className="actionbar" id="bar" ref={barRef} hidden />
     </>
   );
