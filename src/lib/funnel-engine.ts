@@ -6,6 +6,8 @@
  * mountFunnel(shell, bar) monta o funil no #shell/#bar e devolve a limpeza.
  */
 
+import claudiaStoryImage from "@/assets/historia-claudia.png.asset.json";
+
 export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
   const g = shell;
   const _ = bar;
@@ -128,6 +130,7 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
     "images_5.jpeg": `/funnel/images_5.jpeg`,
     "images_7.jpeg": `/funnel/images_7.jpeg`,
   };
+  d[`historia-claudia.png`] = claudiaStoryImage.url;
   const f = (name: string) => d[name] ?? ``;
 
   // ---------- etapas ----------
@@ -248,6 +251,22 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
         default: `Assista até o final para receber a receita ajustada para perder {{delta}} kg e reduzir {{area}}...`,
       },
       cta: `PERSONALIZAR MINHA RECEITA`,
+    },
+    {
+      id: `historia-claudia`,
+      type: `story`,
+      title: `A história da Cláudia`,
+      image: `historia-claudia.png`,
+      paragraphs: [
+        `Essa é a Cláudia. Há um ano atrás, ela chegou no meu consultório pesando cento e dez quilos, com 43 anos. O pior: ela tinha tentado absolutamente tudo para emagrecer, mas, depois que ganhou seu segundo filho, aos trinta e sete anos, nada funcionava mais. Ela foi no limite: dietas cada vez mais restritivas, ficava horas sem comer e, quando comia, era salada; horas de academia todo dia; um detox de sete dias só de suco verde. Quase desmaiou.`,
+        `Sempre o mesmo padrão: perdia cinco, seis quilos e ganhava tudo de volta depois, às vezes até mais. Até que um dia ela teve um colapso. Estava num jantar de família quando uma tia, sem maldade nenhuma, falou: “Cláudia, você está grávida de novo?” Ela não estava. Era a barriga mesmo. Ela saiu daquele jantar, foi pro banheiro e chorou muito.`,
+        `E foi enquanto ela me contava isso que eu me perguntei: se eu, que sou especialista, não estou conseguindo ajudá-la a emagrecer, tem algo muito errado com o que a gente sabe sobre o emagrecimento feminino. Foi aí que eu comecei a pesquisar por que mulheres engordam depois dos trinta de um jeito que homens não engordam. Por que dieta, academia, caminhada, aulas coletivas, tudo para de funcionar nessa fase? E foi quando eu encontrei algo que mudou tudo.`,
+        `Eu fui pesquisar e me deparei com algo que sempre me intrigou: por que mulheres japonesas raramente engordam, independente da idade? Mulheres japonesas com cinquenta, sessenta, setenta anos, magras, ativas, com energia. Enquanto isso, no Ocidente, mulheres engordam do nada depois dos trinta. Qual é a diferença?`,
+        `Pesquisadores analisaram o perfil hormonal e o microbioma de mulheres japonesas e descobriram que elas apresentavam níveis muito menores de cortisol, baixa inflamação intestinal e receptores de leptina funcionando normalmente. Tudo porque no Japão, todos os dias, elas consomem chia hidratada.`,
+        `Sim, mulheres japonesas consomem chia hidratada diariamente e isso cria um gel poderoso que, ao chegar ao intestino, age diretamente sobre o estado inflamatório crônico, desbloqueia os receptores de leptina e entrega ao corpo exatamente o sinal de que não há perigo, fazendo com que ele pare de acumular gordura visceral. Quando o corpo recebe esse sinal, o modo de preservação hormonal desliga, a fome infinita desaparece e o organismo finalmente autoriza a queima da gordura estocada.`,
+        `Quando eu vi isso, imediatamente passei a receita da chia para a Cláudia. Ela começou a tomar todas as manhãs. Em três dias, a fome tinha desaparecido. Em duas semanas, ela já tinha eliminado sete quilos e o peso não voltou, porque ela estava desligando o modo de preservação hormonal, consumindo a chia todos os dias. Foi aí que eu comecei a ensinar isso pras minhas outras pacientes que tinham dificuldade pra emagrecer. E os resultados foram absurdos. Mulheres que não emagreciam há anos perderam vinte, trinta, quarenta quilos de gordura.`,
+      ],
+      cta: `CONTINUAR`,
     },
     {
       id: `peso-atual`,
@@ -1028,6 +1047,23 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
     g.querySelector(`[data-next]`)?.addEventListener(`click`, () => x.evento(`cta_vsl1`));
   }
 
+  function ge(e: any) {
+    const paragraphs = e.paragraphs
+      .map((paragraph: string) =>
+        `<p>${paragraph.replace(/[&<>"']/g, (char: string) => ({ "&": `&amp;`, "<": `&lt;`, ">": `&gt;`, '"': `&quot;`, "'": `&#39;` })[char] || char)}</p>`,
+      )
+      .join(``);
+
+    g.innerHTML = `
+    ${U(e)}
+    <h1 class="title recipe-intro__title">${B(e)}</h1>
+    <figure class="recipe-testimonial">
+      <img class="recipe-testimonial__img" src="${f(e.image)}" alt="Cláudia, cuja história é contada nesta etapa" width="1346" height="1168" loading="eager">
+      <figcaption class="recipe-testimonial__text">${paragraphs}</figcaption>
+    </figure>
+    <button class="cta recipe-cta-inline" type="button" data-next>${e.cta}</button>`;
+  }
+
   const se = () => Math.max(0.5, P() * 0.12);
 
   function J(dec: number, pow: number) {
@@ -1217,6 +1253,7 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
     form: ie,
     loading: ae,
     vsl: oe,
+    story: ge,
     projection: le,
     offer: de,
   };
