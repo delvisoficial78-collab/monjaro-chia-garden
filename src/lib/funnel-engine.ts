@@ -1008,14 +1008,20 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
 
     g.innerHTML = `
     ${U(e)}
-    <h1 class="title recipe-intro__title">Em segundos, você vai receber sua combinação personalizada do Monjaro de Chia.</h1>
+    <h1 class="title recipe-intro__title">Análise das respostas</h1>
     <div class="recipe-intro__card recipe-intro__card--center recipe-intro__card--gap">
-      <p>Talvez o que mais te incomode não seja apenas o número que aparece na balança, mas olhar para o espelho e sentir que já não tens o corpo em que te sentias bonita e confiante. Talvez já tenhas tentado várias dietas, reduzido a quantidade de comida e feito esforços para emagrecer, mas, mesmo assim, continuas sem alcançar o resultado que tanto desejas.</p>
-      <p>Pelo que eu analisei nas suas respostas, o seu corpo está preso no que eu chamo de modo de preservação hormonal. E é exatamente isso que está impedindo você de emagrecer.</p>
+      <p>Pelo que foi analisado nas suas respostas, o seu corpo está preso no modo de preservação hormonal. E é isso que está impedindo você de emagrecer.</p>
       <p>Mas não se preocupe: a receita da chia que eu vou te mostrar quebra esse bloqueio, cria um gel poderoso no seu estômago e faz o seu corpo voltar a queimar gordura naturalmente, podendo eliminar até 10 quilos no primeiro mês e 25 quilos em noventa dias.</p>
+    </div>
+    <div class="recipe-intro__card recipe-intro__card--center recipe-intro__card--gap">
+      <h2 class="title--lg">O que é o monjaro de chia</h2>
+      <p>O Monjaro de Chia, é um protocolo personalizado que, com base no seu perfil, entrega a combinação exata, o ingrediente certo, a proporção certa e o momento certo do dia pra você começar a desligar o modo de preservação hormonal ainda hoje, sem passar fome, sem mudar tudo o que você come, apenas fazendo um ajuste diário com o que já existe na sua cozinha.</p>
     </div>
     <h2 class="title--lg recipe-testimonials__headline">Até mulheres que acreditavam ter um corpo difícil de emagrecer a conquistar esses resultados.</h2>
     ${testimonials}
+    <div class="recipe-intro__card recipe-intro__card--center recipe-intro__card--gap">
+      <p>Eu preciso que você responda mais algumas perguntas rápidas. Com as suas respostas, eu identifico qual é a sua combinação específica. E na próxima página eu te revelo o seu protocolo personalizado do Monjaro de Chia.</p>
+    </div>
     <button class="cta recipe-cta-inline" type="button" data-next>${e.cta}</button>`;
     q = null;
     v(null);
