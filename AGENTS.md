@@ -17,6 +17,8 @@
   useEffect inside `#app`. Why: the original CSS relies on `#app` for mobile
   gutters and vertical alignment; keep funnel edits in the engine's step/config
   data, not in React components.
+- Narrative case-study stages use a dedicated `story` renderer in the funnel
+  engine so their image and copy remain part of the step configuration.
 - Original site styling lives in `public/css/*.css` (linked after the template
   stylesheet in `src/routes/__root.tsx`); funnel media is in `public/funnel/`.
 - Debug harness preserved from the original: `/?debug[&step=<id|index>]`
