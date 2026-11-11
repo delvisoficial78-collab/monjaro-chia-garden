@@ -455,6 +455,23 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
       note: `Análise concluída com sucesso!`,
       title: `Parabéns! A sua combinação foi identificada e o seu protocolo personalizado do Monjaro de Chia já foi liberado.`,
       destaque: `O seu caso é um dos melhores que existem pra quem quer emagrecer, o seu padrão hormonal, quando recebem a combinação certa, costumam eliminar entre 22 e 33 quilos em menos de noventa dias.`,
+      resultadoExtra: `Eu quero que você tenha resultados como esses. Com base em tudo que você respondeu, o nosso sistema já terminou de mapear o seu perfil hormonal. A combinação exata do Monjaro de Chia, os ingredientes certos, a proporção certa e o momento certo do dia já foi calculada especialmente pra você.`,
+      mensagens: [
+        [
+          `Essa era eu há quatro meses, noventa e seis quilos. Olha como está minha barriga agora. Sabe o que mais me machucava? Não era o número na balança, era não conseguir abraçar meus filhos direito.`,
+          `Quando comecei o Monjaro de Chia, com a minha combinação específica, minha cintura tinha cento e dez centímetros. Hoje tem sessenta e oito centímetros, quarenta e dois centímetros a menos.`,
+          `Mas sabe o que isso significa de verdade? Que outro dia eu abracei minha filha de oito anos e ela conseguiu fechar os braços em volta de mim. Ela falou: “Mãe, agora eu consigo te abraçar inteira.” Hoje sou uma nova mulher.`,
+        ],
+        [
+          `Minha esposa começou o Monjaro de Chia e, em três meses, eliminou vinte e oito quilos. Mas o que realmente mudou foi outra coisa.`,
+          `Ela voltou a querer sair, a se arrumar, a aproveitar a vida. Antes, ela se escondia, recusava convite, evitava foto. Quando ela começou a emagrecer, eu tive minha esposa de volta, a mesma de quando a gente se casou.`,
+        ],
+        [
+          `Eu não estava só carregando peso, eu estava carregando dor: meu joelho que não aguentava mais. Minha pressão estava alta, eu tinha refluxo todo dia. O cardiologista me olhava e falava: “Você precisa emagrecer se não quiser ter um infarto.” Como se eu não soubesse. Claro que eu não queria morrer, mas nada do que eu tentava, mesmo com acompanhamento, dava certo.`,
+          `Com o Monjaro de Chia, eu entendi que o meu corpo não estava me sabotando por acaso. Ele estava preso num bloqueio que nenhuma dieta ia resolver sozinha. Em três meses, eu eliminei vinte e seis quilos. O joelho parou de doer, a pressão normalizou, o refluxo sumiu. Meu médico pediu os exames cardiovasculares de novo. Não tinha nada. Eu finalmente estava saudável.`,
+          `Sabe o que mais me marcou? Foi a primeira vez que eu subi uma escada sem precisar parar no meio. Parece pouco. Pra mim, foi tudo.`,
+        ],
+      ],
       oferta: {
         image: `oferta-exclusiva-5000.png`,
         cta: `QUERO O PLANO COMPLETO - 5.000 KZ`,
