@@ -1,0 +1,45 @@
+.offer-proof {
+  margin-top: 24px;
+}
+
+.offer-proof__intro {
+  margin: 0 0 16px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.offer-proof__messages {
+  display: grid;
+  gap: 12px;
+}
+
+.offer-message {
+  position: relative;
+  max-width: 100%;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.offer-message p + p {
+  margin-top: 12px;
+}
+
+.offer-message::after {
+  position: absolute;
+  bottom: -6px;
+  left: 14px;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  content: "";
+  transform: rotate(45deg);
+}
