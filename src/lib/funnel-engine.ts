@@ -1243,12 +1243,28 @@ export function mountFunnel(shell: HTMLElement, bar: HTMLElement): () => void {
     const t = x.variant === `B` ? `checkout_b` : `checkout`;
     const n = (x.variant === `B` ? u.ofertasB : u.ofertasA)[0].checkout;
     const r = e.oferta;
+    const proofMessages = (e.mensagens || [])
+      .map(
+        (paragraphs: string[], index: number) => `
+          <article class="offer-message" aria-label="Relato ${index + 1}">
+            ${paragraphs
+              .map((paragraph) => `<p>${L(paragraph).replace(/[&<>"']/g, (char: string) => ({ "&": `&amp;`, "<": `&lt;`, ">": `&gt;`, '"': `&quot;`, "'": `&#39;` })[char] || char)}</p>`)
+              .join(``)}
+          </article>`,
+      )
+      .join(``);
     g.innerHTML = `
     <div class="note">${T}${e.note}</div>
     <h1 class="title title--lg">${B(e)}</h1>
     <div class="recipe-intro__card recipe-intro__card--center">
       <p>${L(e.destaque)}</p>
     </div>
+    <div class="recipe-intro__card recipe-intro__card--center offer-result">
+      <p>${L(e.resultadoExtra)}</p>
+    </div>
+    <section class="offer-proof" aria-label="Relatos de clientes">
+      <div class="offer-proof__messages">${proofMessages}</div>
+    </section>
     <div class="oferta">
       <img class="offer-img" src="${f(r.image)}" alt="${r.alt}" width="600" height="901" loading="lazy">
       <a class="cta ${t}" data-checkout="${r.evento}" href="${w(n)}" rel="noopener">${r.cta}</a>
